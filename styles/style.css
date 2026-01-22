@@ -1,0 +1,1069 @@
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --fond_blanc: #F9FAFB;
+    --fond_gris: #d1d1d1;
+    --font_style: #0B1C2D;
+    --fond_hover: #3e4555;
+    --democrats: #0044C9;
+    --republicans: #D71E28;
+    --accent_gold: #C9A44C; 
+    --font-family: "Public Sans", sans-serif;
+    --font-parkison: "Parkinsans", sans-serif;
+    --shadow: 0px 0px 3px 0px var(--font_style);
+}
+
+body {
+    background: var(--fond_blanc);
+    margin: 0;
+    font-family: var(--font-parkison);
+    color: var(--font_style);
+}
+
+a {
+    text-decoration: none;
+    color: var(--fond_blanc);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fond_gris);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fond_hover);
+    border-radius: 3px;
+}
+
+h1 {
+    font-family: var(--font-parkison);
+    font-size: 2.5rem;
+}
+
+hr {
+    margin: 20px;
+    color: var(--font_style);
+}
+
+/**** animation inital ******/
+
+.usa_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--font_style);
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.usa_container svg {
+    width: auto;
+    height: auto;
+    object-fit: fill;
+}
+
+
+/********** Header **********/
+
+header {
+    background-color: var(--font_style);
+   color: var(--fond_blanc);
+    padding: 15px;
+    display: flex;
+    z-index: 20;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--accent_gold);
+}
+
+header img {
+    width: 100px;
+    height: auto;
+}
+
+.choix_annee_election {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 100px;
+}
+
+.select_year {
+   position: relative;
+}
+
+.select_year .svg_select {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 45%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+.select_year .svg_select:first-child {
+    top: 0;
+    transform: rotate(-90deg);
+}
+
+.select_year .svg_select:last-child {
+    bottom: 0px;
+    transform: rotate(90deg);
+}
+
+select {
+    margin: 20px;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 4px;
+    background: var(--fond_blanc);
+    border: none;
+    outline: none;
+    box-shadow: var(--shadow);
+    transition: 0.2s ease;
+    color: var(--font_style);
+    font-family: var(--font-parkison);
+}
+
+option {
+    font-size: 14px;
+    color: var(--font_style);
+}
+
+option:hover, option:focus {
+    background: var(--fond_hover);
+}
+
+select:hover {
+    background: var(--fond_gris);
+}
+
+#select_annee {
+    cursor:s-resize;
+}
+
+.souris_svg {
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.souris_svg>circle {
+    animation: souris 1s ease infinite;
+}
+
+@keyframes souris {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+/**************************** Section Hero ****************************/
+
+.hero_section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 160px;
+    height: 500px;
+    animation: hero_image 5s ease infinite;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero_section_right {
+    width: 500px;
+    z-index: 3;
+}
+
+.hero_section_right p{
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.lien_hero {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.lien_hero > a {
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: 0.2s ease;
+}
+
+.lien_hero > a:first-child {
+    background: var(--font_style);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.lien_hero > a:first-child:hover {
+    background: var(--fond_gris);
+    color: var(--font_style);
+
+}
+
+.lien_hero > a:last-child {
+    border: solid 1px var(--font_style);
+    padding: 12px;
+    border-radius: 12px;
+    color: var(--font_style);
+    
+}
+
+.lien_hero > a:last-child:hover {
+    background: var(--fond_hover);
+    color: var(--fond_gris);
+}
+
+.white_house {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
+.white_house path {
+    stroke: var(--style, #3e4555);
+    stroke-width: 3;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    fill-opacity: 0;
+    fill: url(#monDegrade);
+}
+
+@keyframes dessiner_maison_blanche {
+    0% {
+        stroke-dashoffset: 100;
+        fill-opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+    }
+}
+
+/**************************** présentation éléction ****************************/
+
+.presentation_election {
+    background-image: linear-gradient(to right, var(--democrats) 0% 10%, var(--republicans) 90% 100%);
+    padding: clamp(40px, 10vh, 100px) 20px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.section_presentation {
+    min-height: 300px; 
+    max-height: none !important;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section_presentation h2 {
+    color: var(--fond_blanc);
+    text-align: center;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.presentation_map {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.presentation_election p {
+    color: var(--fond_blanc);
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    display: flex;
+    justify-content: center;
+    transition: 1s ease;
+    padding: 0px 10px;
+    opacity: 0;
+}
+
+.boutton_animation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.button_presentation, .boutton_continuer {
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100px;
+    color: var(--fond_blanc);
+    background: var(--font_style);
+    padding: 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: var(--shadow);
+    transition: 0.2s ease;
+}
+
+.boutton_continuer {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.button_presentation:hover {
+    background: var(--fond_hover);
+    color: var(--fond_blanc);
+}
+
+/**************************************** Section carte avec données *****************************************/
+
+.map_donnes {
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% auto;
+}
+
+/******** Affichage gauche ****************/
+
+.affichage_gauche {
+    position: relative;
+    background: var(--fond_blanc);
+    width: auto;
+    height: auto;
+    border-right: solid 5px var(--font_style);
+    transition: 0.4s ease;
+}
+
+.button_affichage_gauche_responsiv {
+    position: absolute;
+    top: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -90px;
+    transition: 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.titre_etat {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+.panneau_info {
+    margin: 0px 20px;
+}
+
+.liste_nbr_vote {
+    margin-top: 20px;
+}
+
+.nbr_vote {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.nbr_vote:nth-child(1) {
+    color: var(--democrats);
+}
+
+.nbr_vote:nth-child(2) {
+    color: var(--republicans);
+}
+
+.balance {
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+    fill: var(--fond_blanc);
+}
+
+.balance svg{
+    width: 60%;
+    height: auto;
+}
+
+#Balance_animation {
+    transition: 2s ease;
+    transform-origin: 171.229px 82.2832px !important;
+}
+
+#Votes_dem, #Votes_rep {
+    transition: 1s ease;
+}
+
+#value_dem, #value_rep {
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.titre_balance {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+@keyframes actualisation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/***** Affichage droite *******/
+
+.affichage_droite {
+    margin: 50px;
+    height: 100%;
+}
+
+/* Barre des resultats */
+
+.resultats {
+    position: relative;
+    width: 90%; 
+    max-width: 800px;
+}
+
+.medaille {
+    position: absolute;
+    top: -10px;
+    transform: translateX(-50%);
+    z-index: 7;
+    transition: left 1s ease;
+}
+
+.noms_parties {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    position: relative;
+    height: 50px;
+    font-size: clamp(12px, 2.5vw, 16px); 
+}
+
+.noms_parties b:first-child { 
+    color: var(--democrats); 
+    margin-left: 50px;
+}
+.noms_parties b:last-child { 
+    color: var(--republicans); 
+    margin-right: 50px;
+}
+
+.nbr_electeur {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px clamp(10px, 2vw, 20px); 
+    background: var(--font_style);
+    border-radius: 16px;
+    z-index: 6;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nbr_electeur b {
+    display: flex;
+    justify-content: center;
+    color: var(--fond_gris) !important;
+    white-space: nowrap;
+    font-size: clamp(12px, 3vw, 15px);
+    text-align: center;
+}
+
+.nbr_electeur_ligne {
+    position: absolute;
+    z-index: 5;
+    background: var(--font_style);
+    height: 80px; 
+    width: 2px;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+}
+
+.barre_resultat {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: var(--fond_gris);
+    border-radius: 16px;
+    overflow: hidden; 
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.barre_resultat::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background-image: linear-gradient(to right, rgb(46, 46, 46, 0.2) 0% 10%, transparent 40% 60%, rgb(46, 46, 46, 0.2) 90% 100%);
+    pointer-events: none;
+}
+
+.barre_democrats, .barre_republicain {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    transition: width 1s ease-in-out;
+    width: 50%; 
+}
+
+.barre_democrats {
+    left: 0;
+    background: var(--democrats);
+}
+
+.barre_republicain {
+    right: 0;
+    background: var(--republicans);
+}
+
+/* --- Les Logos dans les barres --- */
+.logo_parties {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%); /* Centrage vertical parfait */
+    
+    /* Taille adaptative : ne dépasse jamais la hauteur de la barre */
+    width: clamp(25px, 8vw, 35px);
+    height: clamp(25px, 8vw, 35px);
+}
+
+.barre_democrats .logo_parties { left: 10px; }
+.barre_republicain .logo_parties { right: 10px; }
+
+/* Carte des Etats-Unis */
+
+.USA_map {
+    margin: 20px 20px;
+    width: 60%;
+    height: 20%;
+    height: auto;
+}
+
+.USA_map path {
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.2s ease !important;
+    pointer-events: none;
+    stroke-width: 1.5px;
+    stroke: var(--font_style);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+
+@keyframes apparition_etat {
+    0% {
+        opacity: 0;
+        fill-opacity: 0;
+        stroke-dashoffset: 1;
+        stroke: var(--font_style);
+    }
+    50% {
+        opacity: 1;
+        fill-opacity: 0;
+        stroke-dashoffset: 0;
+        stroke: var(--font_style);
+    }
+    100% {
+        opacity: 1;
+        fill-opacity: 1;
+        stroke-dashoffset: 0;
+        pointer-events: auto;
+        stroke: var(--fond_gris);
+        
+    }
+}
+
+.USA_map path:nth-child(-n+51):hover, .state_open {
+    fill-opacity: 0.5 !important;
+}
+
+.flex_info {
+    display: flex;
+    align-items: center;
+}
+
+.nom_etat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-bottom: solid 2px #0F172A;
+    min-width: 150px;
+}
+
+.annee_election {
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.annee_election b {
+    display: flex;
+    justify-content: center;
+}
+
+.choix_annee {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.svg_choix_annee>svg {
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.svg_choix_annee>svg:hover {
+    opacity: 0.5;
+}
+
+.choix_annee_disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.annee {
+    font-size: 50px;
+}
+
+/********************************** autres graphiques **********************************/
+
+.donnees_graphiques {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--font_style);
+    gap: 30px;
+    color: var(--fond_blanc);
+    padding: 30px 10%;
+}
+.diagramme_titre {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/****** nuage de bulles ******/
+
+.nuage_bulles_etat {
+    position: relative;
+    background: var(--fond_blanc);
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.bulle_etat {
+    position: absolute;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Un léger contour pour séparer les bulles */
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: var(--shadow);
+    transform: scale(0);
+    overflow: visible;
+}
+
+@keyframes apparition_bulle {
+    0% {
+        transform: translate(var(--decalageX, 0), var(--decalageY, 0)) scale(0);
+    }
+    100% {
+        transform: translate(var(--decalageX, 0), var(--decalageY, 0)) scale(1);
+    }
+}
+
+.bulle_etat:hover {
+    transform: scale(1.4);
+    z-index: 10;
+}
+
+.info_bulle {
+    position: absolute;
+    bottom: 110%;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 150px;
+    text-align: center;
+    opacity: 0;
+    z-index: 10;
+    transition: 0.2s ease;
+    pointer-events: none;
+    stroke: var(--fond_blanc);
+    stroke-width: 1.5px;
+}
+
+.info_bulle_text {
+    display: flex;
+    margin-top: 2px;
+    align-items: center; 
+    justify-content: center; 
+    font-size: 16px;
+    height: 100%; 
+    font-family: var(--font-family); 
+    text-align: center;
+}
+
+.bulle_etat:hover > .info_bulle {
+    opacity: 1;
+}
+
+/****** diagramme de points divergentes ******/
+
+.diagramme_points_divergentes_flex {
+    display: flex;
+    background: var(--fond_blanc);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    overflow-x: auto;
+    position: relative;
+    height: 600px;
+}
+
+.etats_diagramme {
+    width: 140px;
+    min-width: 140px;
+    padding: 15px 0;
+    border-right: 1px solid var(--fond_gris);
+    background: rgba(249, 250, 251, 0.8);
+    position: sticky;
+}
+
+.titre_etat_diagramme {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 0.9rem;
+    color: var(--font_style);
+    border-bottom: 0.5px solid var(--font_style);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.affichage_points_etats {
+    flex: 1;
+    position: relative;
+    min-width: 450px;
+}
+
+.gradient_fond {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    background: linear-gradient(90deg,var(--democrats) 0% 25%,transparent 45% 55%, 75%,var(--republicans) 100%);
+    opacity: 0.1;
+    border-radius: 4px;
+}
+
+.ligne_centrale {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: var(--font_style);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.marqueurs {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.marqueur {
+    position: absolute;
+    font-size: 0.75rem;
+    color: var(--fond_hover);
+    opacity: 0.7;
+    transform: translateX(-50%);
+    top: 5px;
+}
+
+.marqueur.centre {
+    font-weight: 600;
+    color: var(--font_style);
+    opacity: 1;
+}
+
+.points_etats {
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.point_etat {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transition: all 0.3s ease;
+    border-bottom: solid 1px var(--font_style);
+}
+
+.point_etat svg {
+    position: absolute;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.span_rep, .span_dem {
+    position: absolute;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.span_rep {
+    color: var(--republicans);
+    right: 5%;
+    transform: translateX(50px);
+}
+
+.span_dem {
+    color: var(--democrats);
+    left: 5%;
+    transform: translateX(-50px);
+}
+
+.point_etat:hover>.span_rep, .point_etat:hover>.span_dem {
+     transform: translateX(0px);
+     opacity: 1;
+}
+
+#etoiles_phrases {
+    display: flex;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+
+/*************** footer ***************/
+
+footer {
+    display: flex;
+    padding: 20px;
+    background: var(--fond_gris);
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+
+/*********************************************** Responsive ***********************************************/
+
+@media (max-width: 820px) {
+
+    .white_house {
+        position: absolute;
+        top: -0%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px !important;
+        z-index: -1;
+        filter: blur(4px);
+    }
+
+    .map_donnes  {
+        display: flex;
+    }
+
+    .affichage_gauche {
+        font-size: 14px;
+    }
+
+    .affichage_droite {
+        margin: 100px 10px 0px 10px;
+    }
+    .USA_map {
+        width: 420px !important;
+    }
+
+    .nom_etat {
+        display: none;
+    }
+
+    .flex_info {
+        justify-content: right;
+    }
+}
+
+@media (max-width: 660px) {
+
+    header {
+        justify-content: space-around;
+    }
+
+    .souris_svg {
+        display: none;
+    }
+
+    .hero_section {
+        height: 400px;
+    }
+
+    .hero_section_right p{
+        padding: 10px 50px;
+        font-size: 14px;
+    }
+
+    .presentation_election p {
+        text-align: center;
+    }
+
+    .map_donnes {
+        position: relative;
+        display: block;
+    }
+
+    .affichage_gauche {
+        position: absolute;
+        z-index: 10;
+        top: -100px;
+        width: 100%;
+        min-height: 600px !important;
+        transform: translateX(-100%);
+    }
+
+    .affichage_gauche_responsiv {
+        transform: translateX(0px);
+    }
+
+    .arrow_affichage_gauche {
+        transition: 0.2s ease;
+    }
+
+    .button_affichage_gauche_responsiv {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .button_affichage_gauche_responsiv_gauche {
+        transform: translateX(-100%);
+    }
+
+    .arrow_affichage_gauche_responsiv {
+        transform: rotate(180deg);
+        transform-origin: center;
+    }
+
+    hr, .titre_etat, .panneau_info {
+        margin: 5px 15px;
+    }
+
+    .affichage_droite {
+        display: block;
+        min-height: 500px !important;
+        height: auto;
+    }
+
+    .resultats {
+        max-width: none;
+    }
+
+    .medaille {
+        top: -10px;
+    }
+
+    .USA_map {
+        width: 300px !important;
+    }
+ }

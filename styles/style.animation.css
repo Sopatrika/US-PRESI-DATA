@@ -1,0 +1,190 @@
+.present_1_flex, .present_3_flex {
+    display: flex;
+    justify-content: center;
+}
+
+.present_1_flex>div>div, .present_3_flex>div>b {
+    margin-top: 20px;
+}
+
+.apparition_dessin {
+    color: white;
+}
+
+.present_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes apparition_dessin_svg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.svg_animable {
+    stroke: var(--style);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    fill-opacity: 0;
+    fill: var(--fond_blanc);
+    stroke-width: 1.5;
+}
+
+.present_3 {
+    display: flex;
+}
+
+.present_3_flex > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.present_3 > div > b {
+    color: var(--fond_blanc);
+}
+
+.present_4_points {
+    display: grid;
+    grid-template-columns: 20px 20px 20px 20px 20px;
+}
+
+.boules_partie4 {
+    background: var(--fond_gris);
+    padding: 20px;
+}
+
+.present_4_points {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    justify-content: center;
+}
+
+.boules_partie4 {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--fond_gris);
+    margin: 2px;
+    box-shadow: var(--shadow);
+}
+
+.present_4_flex {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.present_5_flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.barre_resultat_anim {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 45px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between; 
+    border-radius: 8px;
+    overflow: visible; 
+    margin: 60px auto 20px auto;
+    box-shadow: var(--shadow);
+}
+
+.barre_resultat_anim::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to right, rgb(46, 46, 46, 0.2) 0% 10%, transparent 40% 60%, rgb(46, 46, 46, 0.2) 90% 100%);
+}
+
+.seuil_victoire {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    bottom: -5px;
+    width: 5px;
+    height:65px;
+    background: var(--font_style);
+    z-index: 10;
+}
+
+.seuil_victoire span {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 15px;
+    background: var(--font_style);
+    border-radius: 16px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 6;
+}
+
+.barre_dem_anim {
+    width: 0%; 
+    height: 100%;
+    background-color: var(--democrats);
+    transition: 0.5s ease;
+    border-radius: 8px 0 0 8px;
+}
+
+.barre_rep_anim {
+    width: 0%;
+    height: 100%;
+    background-color: var(--republicans);
+    transition: width 0.5s ease;
+    border-radius: 0 8px 8px 0;
+}
+
+@keyframes dessiner_contour {
+    10% {
+        stroke-dashoffset: 150;
+        fill-opacity: 0;
+    }
+    90% {
+        stroke-dashoffset: 0;
+        fill-opacity: 0;
+        stroke: var(--font_style);
+    }
+    100% {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+        stroke: var(--fond_gris);
+    }
+}
+
+@keyframes disparition_contour {
+    0% {
+        stroke: var(--fond_gris);
+        stroke-dashoffset: 100;
+        fill-opacity: 1;
+    }
+    50% {
+        stroke-dashoffset: 0;
+        fill-opacity: 0;
+        stroke: var(--font_style);
+    }
+    100% {
+        stroke-dashoffset: 100;
+        fill-opacity: 0;
+        stroke: var(--font_style);
+    }
+}
