@@ -60,6 +60,10 @@ hr {
     color: var(--font_style);
 }
 
+.presentation_election, .map_donnes {
+    scroll-margin-top: 80px;
+}
+
 /**** animation inital ******/
 
 .usa_container {
@@ -309,6 +313,7 @@ select:hover {
     padding: clamp(40px, 10vh, 100px) 20px;
     position: relative;
     overflow: hidden;
+    height: 700px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -879,6 +884,7 @@ select:hover {
     flex: 1;
     position: relative;
     min-width: 450px;
+    padding: 0 20px;
 }
 
 .gradient_fond {
@@ -903,38 +909,11 @@ select:hover {
     z-index: 1;
 }
 
-.marqueurs {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    right: 20px;
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.marqueur {
-    position: absolute;
-    font-size: 0.75rem;
-    color: var(--fond_hover);
-    opacity: 0.7;
-    transform: translateX(-50%);
-    top: 5px;
-}
-
-.marqueur.centre {
-    font-weight: 600;
-    color: var(--font_style);
-    opacity: 1;
-}
-
 .points_etats {
     margin-top: 15px;
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .point_etat {
@@ -1052,6 +1031,10 @@ footer {
         font-size: 14px;
     }
 
+    header b {
+        display: noneFp;
+    }
+
     .choix_annee_election {
         margin: 0;
     }
@@ -1069,6 +1052,10 @@ footer {
     .hero_section_right p{
         padding: 10px 50px;
         font-size: 14px;
+    }
+
+    .presentation_election {
+        max-height: 650px;
     }
 
     .presentation_election p {
