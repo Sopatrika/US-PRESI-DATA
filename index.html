@@ -21,7 +21,7 @@
     <header>
         <img src="img/logo.png" alt="logo">
         <div class="choix_annee_election">
-            <b>Élection Présidentielle de :</b>
+            <b>Élection Présidentielle de:</b>
             <div class="select_year">
                 <svg class="svg_select" width="20px" height="20px" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"  stroke="#000000" stroke-width="0.8640000000000001"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="var(--fond_blanc)" stroke-width="0.048"></g><g id="SVGRepo_iconCarrier"> <path stroke="var(--fond_blanc)" d="M7.82054 20.7313C8.21107 21.1218 8.84423 21.1218 9.23476 20.7313L15.8792 14.0868C17.0505 12.9155 17.0508 11.0167 15.88 9.84497L9.3097 3.26958C8.91918 2.87905 8.28601 2.87905 7.89549 3.26958C7.50497 3.6601 7.50497 4.29327 7.89549 4.68379L14.4675 11.2558C14.8581 11.6464 14.8581 12.2795 14.4675 12.67L7.82054 19.317C7.43002 19.7076 7.43002 20.3407 7.82054 20.7313Z" stroke-width="1.5px" fill="var(--fond_blanc)"></path> </g></svg>
                 <select name="" id="select_annee">
@@ -54,10 +54,15 @@
 
 
     <div class="hero_section">
-        <div class="her_section_left">        
+        <div class="hero_section_left">        
             <svg class="white_house" height="auto" viewBox="0 0 936 434" fill="var(--fond_blanc)" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="monDegrade" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="degrade_1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:var(--fond_gris); stop-opacity:0.5" />
+                        <stop offset="50%" style="stop-color:var(--fond_blanc); stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:var(--fond_gris); stop-opacity:0.5" />
+                    </linearGradient>
+                    <linearGradient id="degrade_2" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" style="stop-color:var(--fond_blanc); stop-opacity:1" />
                         <stop offset="100%" style="stop-color:var(--fond_gris); stop-opacity:0.5" />
                     </linearGradient>
@@ -388,7 +393,7 @@
             <svg class="USA_map" viewBox="10 0 860 552" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="892" height="552"/>
                 <g id="Accueil" clip-path="url(#clip0_0_1)">
-<rect width="1920" height="3010" transform="translate(-626 -1961)" fill="#F8F8F8"/>
+<rect width="1920" height="3010" transform="translate(-626 -1961)" fill="none"/>
 <g id="Data" clip-path="url(#clip1_0_1)">
 <g id="Blank_US_Map_(states_only) 1" clip-path="url(#clip2_0_1)">
 <g id="Carte">

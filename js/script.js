@@ -377,7 +377,7 @@ function nuage_bulle() {
 //Animation des bulles losqu'ils arrivent
 function apparition_bulle() {
     const rect = nuage_bulle_etat.getBoundingClientRect();
-    const centre_element = rect.top + rect.height / 2 - 100;
+    const centre_element = rect.top + rect.height / 2 - 150;
     const centre_fenetre = window.innerHeight / 2;
 
     if (centre_element <= centre_fenetre) {
