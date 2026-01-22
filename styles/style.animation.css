@@ -1,6 +1,7 @@
 .present_1_flex, .present_3_flex {
     display: flex;
     justify-content: center;
+    gap: 20px;
 }
 
 .present_1_flex>div>div, .present_3_flex>div>b {

@@ -172,11 +172,11 @@ function barre_resultat() {
 
     if (total_dem_EV > total_rep_EV) {
         medaille.style.right = "";
-        medaille.style.left = "30%";
+        medaille.style.left = "10%";
     }
     else if (total_dem_EV < total_rep_EV) {
         medaille.style.left = "";
-        medaille.style.right = "30%";
+        medaille.style.right = "10%";
     }
     else {
         medaille.style.display = "none";
@@ -291,85 +291,85 @@ ColorerCarte();
 
 // Nuage de points
 const nuage_bulle_etat = document.querySelector(".nuage_bulles_etat");
+const nuage_bulle_etat_info = document.querySelector(".nuage_bulles_etat_info");
 
 function nuage_bulle() {
     nuage_bulle_etat.innerHTML = "";
+    nuage_bulle_etat_info.innerHTML = ""; // On vide aussi le conteneur d'infos
+    
     dataAnnee = data
     .filter(item => item.year === annee_choix)
-    .sort((a, b) => {
-        const total_A = a.r_ev + a.d_ev;
-        const total_B = b.r_ev + b.d_ev;
-        // Tri décroissant
-        return total_B - total_A;
-    });
+    .sort((a, b) => (b.r_ev + b.d_ev) - (a.r_ev + a.d_ev));
     
-    // Tableau pour stocker les positions des bulles pour que les autres bulles n'aient pas les positions
     const bulles_placees = [];
 
     dataAnnee.forEach(state => {
-        const bulle_etat = document.createElement('div'); //on crée d'une bulle pour chaque état
+        const bulle_etat = document.createElement('div');
         bulle_etat.className = 'bulle_etat';
-        const ev_total = state.r_ev + state.d_ev; //nbr total de grand élécteurs dans cet etat.
-        const taille = 40 + (ev_total * 2); //on calcule la taille avec 40px comme taille min. la taille dépend du nbr de grand élécteur dans l'état
-        const rayon = taille / 2; //rayon de la bulle
+        const ev_total = state.r_ev + state.d_ev;
+        const taille = 40 + (ev_total * 2);
+        const rayon = taille / 2;
         
         bulle_etat.style.width = `${taille}px`;
         bulle_etat.style.height = `${taille}px`;
 
-        // placement aléatoire de la bulle
-        let top;
-        let left;
-        let collision = true; // variable pour savoir si deux bulles se chevauchent
-        let tentatives = 0; // tentative de placer une bulle (sa échoue si la position est proche d'un autre bulle)
+        let top, left;
+        let collision = true;
+        let tentatives = 0;
 
-        while (collision && tentatives < dataAnnee.length) { 
-            // On génère une coordonnée X et Y au hasard dans le parent
+        while (collision && tentatives < 100) { 
             top = Math.random() * (nuage_bulle_etat.clientHeight - taille);
             left = Math.random() * (nuage_bulle_etat.clientWidth - taille);
-            
-            collision = false; // On suppose que la place est libre
+            collision = false;
 
-            // On vérifie par rapport à la position des autres bulles déjà crée avec pythagore
-            for (let b of bulles_placees) { //pour chaque position de bulles_placees
-                const distance_x = (left + rayon) - (b.x + b.r); //ecart horizontal entre le centre de la nouvelle bulle et celui d'une bulle déjà crée
-                const distance_y = (top + rayon) - (b.y + b.r); //ecart verticale entre le centre de la nouvelle bulle et celui d'une bulle déjà crée
-                const distance = Math.sqrt(distance_x * distance_x + distance_y * distance_y); //racine carrée 
-
-                // Si la distance entre deux bulles est trop courte, les bulles risquent de se cacher entre eux. Les bulles peuvent se chevaucher de 0.85 max
-                if (distance < (rayon + b.r) * 0.85) { //Si la distance entre les centres est égale, alors les bulles se touchent
-                    collision = true; //y'a chevauchement
-                    break; //on termine la boucle
+            for (let b of bulles_placees) {
+                const distance_x = (left + rayon) - (b.x + b.r);
+                const distance_y = (top + rayon) - (b.y + b.r);
+                const distance = Math.sqrt(distance_x * distance_x + distance_y * distance_y);
+                if (distance < (rayon + b.r) * 0.85) {
+                    collision = true;
+                    break;
                 }
             }
-            tentatives++; //On recommence
+            tentatives++;
         }
 
-        bulles_placees.push({ x: left, y: top, r: rayon });// On enregistre la position validée dans le tableau
+        bulles_placees.push({ x: left, y: top, r: rayon });
 
-        // position de la bulle
         bulle_etat.style.top = top + "px";
         bulle_etat.style.left = left + "px";
 
-        // On attribue les couleurs en fonction de qui a gagner
         if (state.winner == "REP") {
             bulle_etat.style.background = "var(--republicans)";
         } else {
             bulle_etat.style.background = "var(--democrats)";
         }
-        bulle_etat.innerHTML = `<b>${state.state.substring(0, 2)}</b>:<b>${ev_total}</b>`; //On prend que les deux premières lettres avec substring(0, 2)ù
+        bulle_etat.innerHTML = `<b>${state.state.substring(0, 2)}</b>:<b>${ev_total}</b>`;
 
-        // On crée un svg pour donner plus d'infos lorsqu'on hover la bulle
+        // --- GESTION DE L'INFO BULLE EXTERNE ---
         const info_bulle = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         info_bulle.setAttribute("class", "info_bulle");
         info_bulle.setAttribute("viewBox", "0 0 200 60"); 
+        
+        // Positionnement de l'info bulle par rapport à la bulle
+        // On centre l'info bulle (width 200px) sur le centre de la bulle (left + rayon)
+        // Et on la place au dessus (top)
+        info_bulle.style.left = (left + rayon) + "px";
+        info_bulle.style.top = (top) + "px";
+
         const text_content = `${state.state} : ${ev_total} grands élécteurs`;
         info_bulle.innerHTML = `
-        <path d="M 5,5  H 195  A 5,5 0 0 1 200,10  V 45  A 5,5 0 0 1 195,50  H 110  L 100,60  L 90,50  H 5  A 5,5 0 0 1 0,45  V 10  A 5,5 0 0 1 5,5  Z" fill="var(--font_style)" filter="url(#shadow)"/><foreignObject x="5" y="5" width="190" height="40"><div class="info_bulle_text">${text_content}</div></foreignObject>`;
+        <path d="M 5,5 H 195 A 5,5 0 0 1 200,10 V 45 A 5,5 0 0 1 195,50 H 110 L 100,60 L 90,50 H 5 A 5,5 0 0 1 0,45 V 10 A 5,5 0 0 1 5,5 Z" fill="var(--font_style)"/>
+        <foreignObject x="5" y="5" width="190" height="40">
+            <div class="info_bulle_text">${text_content}</div>
+        </foreignObject>`;
 
-        bulle_etat.appendChild(info_bulle);
+        // On lie l'affichage au survol de la bulle
+        bulle_etat.addEventListener('mouseenter', () => info_bulle.style.opacity = "1");
+        bulle_etat.addEventListener('mouseleave', () => info_bulle.style.opacity = "0");
+
         nuage_bulle_etat.appendChild(bulle_etat);
-        $total_grands_electeurs = dataAnnee[0].r_ev + dataAnnee[0].d_ev;
-        document.getElementById("bulles_phrases").innerHTML = `Etat avec le plus grand nombre de grands élécteurs : <b>${dataAnnee[0].state}</b> avec <b>${$total_grands_electeurs}</b> grands élécteurs`
+        nuage_bulle_etat_info.appendChild(info_bulle); // Ajout dans le conteneur externe
     });
 
     apparition_bulle();

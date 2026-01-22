@@ -62,11 +62,13 @@ hr {
     background-color: var(--font_style);
     z-index: 9999;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .usa_container svg {
-    width: auto;
-    height: auto;
+    width: 100%;
     object-fit: fill;
 }
 
@@ -418,14 +420,17 @@ select:hover {
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
+    gap: 10px;
 }
 
 .nbr_vote:nth-child(1) {
     color: var(--democrats);
+    text-align: left;
 }
 
 .nbr_vote:nth-child(2) {
     color: var(--republicans);
+    text-align: end;
 }
 
 .balance {
@@ -436,7 +441,7 @@ select:hover {
 }
 
 .balance svg{
-    width: 60%;
+    width: 70%;
     height: auto;
 }
 
@@ -483,16 +488,25 @@ select:hover {
 
 .resultats {
     position: relative;
-    width: 90%; 
+    width: 95%;
     max-width: 800px;
+    margin: 20px 0px;
 }
 
 .medaille {
     position: absolute;
-    top: -10px;
-    transform: translateX(-50%);
-    z-index: 7;
-    transition: left 1s ease;
+    z-index: 5;
+    top: -25px;
+}
+
+/* Si medaille a  left: 30%*/
+.medaille[style*="left: 15%"] {
+    transform: translateX(150%);
+}
+
+/* Si medaille a  right: 30%*/
+.medaille[style*="right: 15%"] {
+    transform: translateX(-150%);
 }
 
 .noms_parties {
@@ -644,7 +658,7 @@ select:hover {
     }
 }
 
-.USA_map path:nth-child(-n+51):hover, .state_open {
+.USA_map path:hover, .state_open {
     fill-opacity: 0.5 !important;
 }
 
@@ -720,6 +734,10 @@ select:hover {
 
 /****** nuage de bulles ******/
 
+.nuage_bulles {
+    position: relative; /* Parent de référence */
+}
+
 .nuage_bulles_etat {
     position: relative;
     background: var(--fond_blanc);
@@ -727,6 +745,17 @@ select:hover {
     border: 1px solid #ccc;
     border-radius: 8px;
     overflow: hidden;
+}
+
+.nuage_bulles_etat_info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Laisse passer les clics vers les bulles */
+    z-index: 20; /* Au dessus de l'overflow hidden */
+    overflow: visible;
 }
 
 .bulle_etat {
@@ -762,18 +791,15 @@ select:hover {
 
 .info_bulle {
     position: absolute;
-    bottom: 110%;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    width: 150px;
-    text-align: center;
-    opacity: 0;
-    z-index: 10;
-    transition: 0.2s ease;
-    pointer-events: none;
+    width: 200px;
+    height: 60px;
+    transform: translate(-50%, 35%); 
+    stroke-width: 1.5;
     stroke: var(--fond_blanc);
-    stroke-width: 1.5px;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    overflow: visible;
 }
 
 .info_bulle_text {
@@ -785,6 +811,11 @@ select:hover {
     height: 100%; 
     font-family: var(--font-family); 
     text-align: center;
+}
+
+.bulle_etat:hover {
+    transform: scale(1.2);
+    z-index: 10;
 }
 
 .bulle_etat:hover > .info_bulle {
@@ -900,7 +931,6 @@ select:hover {
 
 .point_etat svg {
     position: absolute;
-    cursor: pointer;
     overflow: visible;
 }
 
@@ -968,6 +998,10 @@ footer {
 
     .affichage_gauche {
         font-size: 14px;
+    }
+
+    .balance svg {
+        width: 190px;
     }
 
     .affichage_droite {
@@ -1047,6 +1081,10 @@ footer {
 
     hr, .titre_etat, .panneau_info {
         margin: 5px 15px;
+    }
+
+    .balance svg{  
+        width: 300px;
     }
 
     .affichage_droite {

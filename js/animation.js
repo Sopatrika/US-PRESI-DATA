@@ -1,3 +1,5 @@
+//Animation d'initialisation du site web
+
 document.addEventListener("DOMContentLoaded", () => {
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
     gsap.set([".fond-rouge", ".rayures-blanches"], { scaleX: 0, transformOrigin: "left center" });
@@ -183,13 +185,13 @@ button_presenter.addEventListener("click", function() {
     .to(".presentation_map", { opacity: 1, duration: 1 })
     .to(this, { duration: 3,
         onStart: () => {
-            const cibleD = document.getElementById("%d");
-            const cibleR = document.getElementById("%r");
-
+            const idD = document.getElementById("%d");
+            const idR = document.getElementById("%r");
+            //On crée un compteur pour les deux id
             gsap.to(this.compteurs, { dem: 56, rep: 44, duration: 2.5, ease: "power1.inOut",
                 onUpdate: () => {
-                    cibleD.textContent = `Démocrates : ${Math.floor(this.compteurs.dem)}%`;
-                    cibleR.textContent = `Républicains : ${Math.floor(this.compteurs.rep)}%`;
+                    idD.textContent = `Démocrates : ${Math.floor(this.compteurs.dem)}%`;
+                    idR.textContent = `Républicains : ${Math.floor(this.compteurs.rep)}%`;
                 }
             });
         }
