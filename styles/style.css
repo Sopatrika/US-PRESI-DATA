@@ -391,14 +391,15 @@ select:hover {
 
 .button_affichage_gauche_responsiv {
     position: absolute;
-    top: -5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    right: -90px;
+    right: -53px;
     transition: 0.4s ease;
     opacity: 0;
     pointer-events: none;
+    background: var(--fond_gris);
+    border-radius: 50px;
 }
 
 .titre_etat {
@@ -1072,6 +1073,7 @@ footer {
 
     .button_affichage_gauche_responsiv_gauche {
         transform: translateX(-100%);
+        background: none;
     }
 
     .arrow_affichage_gauche_responsiv {
